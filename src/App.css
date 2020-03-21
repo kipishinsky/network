@@ -12,6 +12,7 @@
 }
 
 .app-wrapper-content {
-    /*grid-area: ;*/
+    grid-area: c;
     background-color: blueviolet;
+    padding: 10px;
 }
