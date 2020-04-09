@@ -12,7 +12,7 @@ const Post_block = (props) => {
                 </div>
 
                 <div>
-                    Post 1
+                    Post 1 <br/>
                     {props.message}
                 </div>
 
