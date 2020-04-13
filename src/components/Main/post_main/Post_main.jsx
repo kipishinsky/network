@@ -3,6 +3,17 @@ import s from './Post_main.module.css';
 import Post_block from "./post_block/Post_block";
 
 const Post_main = (props) => {
+
+    let posts = [
+        {id: 1, message : "Hi", likesCount: 15},
+        {id: 2, message : "Hi, how are you?", likesCount: 3},
+        {id: 3, message : "idi nahuy", likesCount: 24},
+        {id: 4, message : "Blya", likesCount: 10},
+        {id: 5, message : "Pizdec", likesCount: 5}
+    ];
+
+    let postsElements = posts.map ( p => <Post_block message = {p.message} likesCount = {p.likesCount}/>);
+
     return (
         <div className={s.postsBlock}>
                 <h3>My post</h3>
@@ -22,9 +33,7 @@ const Post_main = (props) => {
                     </div>
                 </div>
                 <div className={s.posts}>
-                    <Post_block message = "Hi, how are you?"/>
-                    <Post_block message = "idi nahuy"/>
-                    <Post_block />
+                    {postsElements}
                 </div>
         </div>
     )

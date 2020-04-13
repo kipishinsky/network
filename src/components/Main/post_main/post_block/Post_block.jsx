@@ -17,7 +17,7 @@ const Post_block = (props) => {
                 </div>
 
             </div>
-            <Like kolvolike = {'30 '}/>
+            {/*<Like likeCount = {props.postData[1].likesCount}/>*/}
 
          </div>
 

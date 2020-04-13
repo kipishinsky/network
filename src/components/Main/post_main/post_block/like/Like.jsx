@@ -7,7 +7,7 @@ const Like = (props) => {
         <div className={likeblock}>
 
             <div>
-                {props.kolvolike} <span>like</span>
+                <span> {props.likesCount}30 like</span>
             </div>
 
          </div>
