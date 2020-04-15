@@ -1,18 +1,16 @@
 import React from "react";
-import likeblock from './Like.module.css';
+import l from './Like.module.css';
 
 const Like = (props) => {
 
     return (
-        <div className={likeblock}>
-
+        <div className={l.colorlike}>
             <div>
-                <span> {props.likesCount}30 like</span>
+                <span> {props.likesCount} like</span>
             </div>
-
          </div>
 
      );
-}
+};
 
 export default Like;

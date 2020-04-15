@@ -10,14 +10,13 @@ const Post_block = (props) => {
                 <div>
                     <img src="https://www.elsetge.cat/myimg/f/31-317081_server-farm-wallpaper-google-server-rooms-usa.jpg"/>
                 </div>
-
                 <div>
                     Post 1 <br/>
                     {props.message}
                 </div>
-
+                <Like likesCount = {props.likesCount}/>
             </div>
-            {/*<Like likeCount = {props.postData[1].likesCount}/>*/}
+
 
          </div>
 
