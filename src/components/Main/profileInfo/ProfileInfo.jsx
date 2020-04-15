@@ -1,7 +1,7 @@
 import React from "react";
-import s from './Main_Info.module.css'
+import s from './ProfileInfo.module.css'
 
-const Main_Info = () => {
+const ProfileInfo = () => {
 
   return (
       <div>
@@ -15,4 +15,4 @@ const Main_Info = () => {
     );
 }
 
-export default Main_Info;
+export default ProfileInfo;

@@ -1,18 +1,10 @@
 import React from "react";
-import s from './Post_main.module.css';
-import Post_block from "./post_block/Post_block";
+import s from './PostInfo.css';
+import Post from "./post_block/Post";
 
-const Post_main = (props) => {
+const Posts = (props) => {
 
-    let posts = [
-        {id: 1, message : "Hi", likesCount: 15},
-        {id: 2, message : "Hi, how are you?", likesCount: 3},
-        {id: 3, message : "idi nahuy", likesCount: 24},
-        {id: 4, message : "Blya", likesCount: 10},
-        {id: 5, message : "Pizdec", likesCount: 5}
-    ];
-
-    let postsElements = posts.map ( p => <Post_block message = {p.message} likesCount = {p.likesCount}/>);
+    let postsElements = props.state.map ( p => <Post message = {p.message} likesCount = {p.likesCount}/>);
 
     return (
         <div className={s.postsBlock}>
@@ -38,4 +30,4 @@ const Post_main = (props) => {
         </div>
     )
 }
-export default Post_main;
+export default Posts;

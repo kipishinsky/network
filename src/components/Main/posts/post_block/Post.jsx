@@ -1,8 +1,8 @@
 import React from "react";
-import pstblock from './Post_block.module.css';
+import pstblock from './Post.module.css';
 import Like from './like/Like'
 
-const Post_block = (props) => {
+const Post = (props) => {
 
     return (
         <div className={pstblock.post_main}>
@@ -23,4 +23,4 @@ const Post_block = (props) => {
      );
 }
 
-export default Post_block;
+export default Post;
