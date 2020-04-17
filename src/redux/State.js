@@ -1,3 +1,5 @@
+import cat from '../Image/cat.jpg'
+
 let state = {
     profilePage: {
         posts: [
@@ -10,11 +12,11 @@ let state = {
     },
     dialogsPage: {
         dialogs: [
-            {id: 1, name: "Anton"},
-            {id: 2, name: "Sveta"},
-            {id: 3, name: "Katya"},
-            {id: 4, name: "Ira"},
-            {id: 5, name: "Dima"}
+            {id: 1, name: "Anton", img: cat},
+            {id: 2, name: "Sveta", img: cat},
+            {id: 3, name: "Katya", img: cat},
+            {id: 4, name: "Ira", img: cat},
+            {id: 5, name: "Dima", img: cat}
         ],
         messages: [
             {id: 1, message: "Hi"},
