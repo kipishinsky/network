@@ -5,9 +5,9 @@ let state = {
         posts: [
             {id: 1, message: "Hi", likesCount: 15},
             {id: 2, message: "Hi, how are you?", likesCount: 3},
-            {id: 3, message: "idi nahuy", likesCount: 24},
-            {id: 4, message: "Blya", likesCount: 10},
-            {id: 5, message: "Pizdec", likesCount: 5}
+            {id: 3, message: "Hahaha", likesCount: 24},
+            {id: 4, message: "MOREMOREMORE", likesCount: 10},
+            {id: 5, message: "SHklaw2kasj", likesCount: 5}
         ]
     },
     dialogsPage: {
@@ -27,4 +27,15 @@ let state = {
         ]
     }
 };
+
+export let addPost = (postMessage) => {
+    debugger
+    let newPost = {
+        id: 6,
+        message: postMessage,
+        likesCount: 0
+    };
+    state.profilePage.posts.push(newPost);
+};
+
 export default state;
