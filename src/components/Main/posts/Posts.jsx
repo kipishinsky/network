@@ -9,9 +9,9 @@ const Posts = (props) => {
     let newInputValue = React.createRef();
 
     let newPostTextArea = () => {
-        debugger
         let text = newInputValue.current.value;
         props.addPost (text);
+        newInputValue.current.value = '';
     };
     return (
         <div className={s.postsBlock}>
