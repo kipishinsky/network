@@ -2,15 +2,21 @@ import React from "react";
 import w from './Profile.module.css'
 import Posts from './posts/Posts'
 import ProfileInfo from "./profileInfo/ProfileInfo";
+import {updateNewPostText} from "../../redux/State";
 
 
 
 const Profile = (props) => {
-  debugger;
   return (
       <div>
           <ProfileInfo  />
-          <Posts state = {props.state.posts} addPost = {props.addPost}/>
+          debugger
+          <Posts
+              state = {props.state.posts}
+              addPost = {props.addPost}
+              newPostText = {props.state.newPostText}
+              updateNewPostText = {props.updateNewPostText}
+          />
       </div>
     );
 }

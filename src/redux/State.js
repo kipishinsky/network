@@ -1,5 +1,8 @@
 import cat from '../Image/cat.jpg'
-import {rerenderEntireTree} from "../render";
+
+let rerenderEntireTree = () => {
+    console.log ('state changed');
+}
 
 let state = {
     profilePage: {
@@ -9,7 +12,8 @@ let state = {
             {id: 3, message: "Hahaha", likesCount: 24},
             {id: 4, message: "MOREMOREMORE", likesCount: 10},
             {id: 5, message: "SHklaw2kasj", likesCount: 5}
-        ]
+        ],
+        newPostText: "kamasutra"
     },
     dialogsPage: {
         dialogs: [
@@ -29,15 +33,24 @@ let state = {
     }
 };
 
-export let addPost = (postMessage) => {
-    debugger
+export const addPost = () => {
     let newPost = {
         id: 6,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 };
+
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+}
 
 export default state;
