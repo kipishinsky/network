@@ -4,8 +4,15 @@ import Header from "./components/Header/Header.jsx";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Main/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
-import {updateNewPostText} from "./redux/State";
+import {BrowserRouter} from "react-router-dom"; /*устанавливаем реакт роутер дом
+команда в консоле
+npm i react-router-dom -save (флаг -save означает что нужно внести
+запись в packagejson файл - сохранит все зависимости и улетит на гит.
+при клонированнии репазы с гита, не будет проблем с зависимостями
+
+при новой компиляции кем либо нужно будет прописать npm install и все будет работать
+ */
+import Route from "react-router-dom/es/Route";
 
 
 const App = (props) => {
@@ -19,13 +26,19 @@ const App = (props) => {
                   {/*<Route exact path={'/profile'} component={Profile}/>*/}
                   {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
 
-                  <Route exact path={'/profile'} render={ () => <Profile
-                      state = {props.state.profilePage}
-                      addPost = {props.addPost}
-                      updateNewPostText = {props.updateNewPostText}
-                  />}
-                  />
-                  <Route exact path={'/dialogs'} render={ () => <Dialogs state = {props.state.dialogsPage}   />}/>
+                  {/*добавляем роутинг нашим компонентам,
+                  чтобы путь отображался кореектно для каждой страницы*/}
+                  <Route exact path={'/profile'} render={ () =>
+                      <Profile
+                          state={props.state.profilePage}
+                          addPost={props.addPost}
+                          updateNewPostText={props.updateNewPostText}
+                      />
+                  }/>
+                  <Route exact path={'/dialogs'} render={() =>
+                      <Dialogs state={props.state.dialogsPage}
+                      />
+                  }/>
               </div>
 
           </div>
