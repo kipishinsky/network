@@ -3,10 +3,6 @@ import s from './Dialogs.module.css' // модульный файл css
 import DialogItem from "./dialogItem/DialogItem";
 import Message from "./message/Message";
 
-/* в 26 уроке подробно рассказывается про структуру проекта и про понимание,
-по хорошему нужно зарисовать план схему проекта, ну либо софтом воспользоваться и
- нарисовать уже схематично, что откуда и куда идет
- */
 
 const Dialogs = (props) => {
 
