@@ -1,18 +1,19 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 10fr; /* грид состоит из 2 колонок,
+    1 колонка зание 2фракции, вторая 10фр.*/
 }
 
 .dialogsItems {
-    padding: 10px;
+    padding: 10px; /* отступы */
 }
 
 .dialogsItems .active {
-    color: gold;
+    color: gold;  /* цвет активной ссылки */
 }
 
 .messages {
-    padding: 10px;
+    padding: 10px; /* отступы */
 }
 
 .message {
