@@ -34,7 +34,6 @@ const App = (props) => {
                   рендер возвращает функцию, которая возвращает jsx. если идти через компоненту
                   то можно передать только компоненту
                   */}
-
                   {/*<Route exact path={'/profile'} component={Profile}/>*/}
                   {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
                   <Route exact path={'/profile'} render={ () =>
