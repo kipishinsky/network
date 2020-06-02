@@ -4,6 +4,10 @@ import DialogItem from "./dialogItem/DialogItem";
 import Message from "./message/Message";
 
 
+/*в 22 уроке сделали роутинг на проваливание в индивидуальные мессенджи, добавили в путь
+роутинга еще цифры для каждого диалога, в дальнейшем переделает это все дело в мап
+и будет песня*/
+
 const Dialogs = (props) => {
 
     let dialogsElements = props.state.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
