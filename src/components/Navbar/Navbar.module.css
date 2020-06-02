@@ -5,11 +5,13 @@
 
 }
 
+/*ссылки*/
 .item a {
     color: white;
-    text-decoration: none;
+    text-decoration: none; /* убираем подчеркивание ссылки */
 }
 
+/*когда кликнул на ссылку меняет цвет на заданный*/
 .item a.active {
     color: Gold;
 }
