@@ -6,14 +6,6 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 
-
-/* в 28 уроке выносим данные на уровень выше, потом еще выше и пока самый высокий
-уровень это index.js. потом все данные прокидываем до хвостов в пропсах.
-
-потом мы создадим уже редакс и сам стейт (state) и все данные убегут снова выше и оттуда
-будем в пропсах кидать по хвостам данные
-*/
-
 let rerenderEntireTree = (state) => {
 
     ReactDOM.render(
