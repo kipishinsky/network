@@ -12,7 +12,7 @@ npm i react-router-dom -save (флаг -save означает что нужно 
 
 при новой компиляции кем либо нужно будет прописать npm install и все будет работать
  */
-import Route from "react-router-dom/es/Route";
+import {Route} from "react-router-dom"
 
 
 const App = (props) => {
