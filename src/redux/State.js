@@ -1,6 +1,10 @@
 import cat from '../Image/cat.jpg'
 
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
+
 let store = {
     _state: {
         profilePage: {
@@ -41,7 +45,7 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    dispatch (action) { // action - объект { type: 'ADD-POST'}
+    dispatch (action) { // action - это объект { type: 'ADD-POST'}
         if (action.type === 'ADD-POST') {
             let newPost = {
                 id: 6,
@@ -58,5 +62,8 @@ let store = {
     }
 
 };
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
 
 export default store;
