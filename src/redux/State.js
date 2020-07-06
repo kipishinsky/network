@@ -1,8 +1,10 @@
 import cat from '../Image/cat.jpg'
 
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const UPDATE_NEW_MESSAGE_TEXT_DIALOGS = 'UPDATE_NEW_MESSAGE_TEXT_DIALOGS';
+const SEND_MESSAGE = 'SEND_MESSAGE'
 
 
 let store = {
@@ -31,8 +33,10 @@ let store = {
                 {id: 3, message: "What are your interests/hobbies?"},
                 {id: 4, message: "I am meeting my friends in the evening"},
                 {id: 5, message: "I like to create web-sites"}
-            ]
-        }
+            ],
+            newMessageTextDialogs: ''
+        },
+        sidebar: {}
     },
     _callSubscriber () {
         console.log ('state changed');
@@ -46,7 +50,7 @@ let store = {
     },
 
     dispatch (action) { // action - это объект { type: 'ADD-POST'}
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 6,
                 message: this._state.profilePage.newPostText,
@@ -55,15 +59,27 @@ let store = {
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT_DIALOGS) {
+            this._state.dialogsPage.newMessageTextDialogs = action.newMessageDialogs;
+            this._callSubscriber(this._state);
+        } else if (action.type === SEND_MESSAGE) {
+            let newMessage = this._state.dialogsPage.newMessageTextDialogs;
+            this._state.dialogsPage.newMessageTextDialogs = '';
+            this._state.dialogsPage.messages.push({id: 6, message: newMessage});
             this._callSubscriber(this._state);
         }
     }
 
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addPostCreator = () => ({type: ADD_POST})
+export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+
+export const updateNewMessageTextDialogsCreator = (newMess) => ({type: UPDATE_NEW_MESSAGE_TEXT_DIALOGS, newMessageDialogs: newMess})
+export const sendMessageCreator = () => ({type: SEND_MESSAGE})
+
 
 export default store;

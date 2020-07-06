@@ -1,7 +1,7 @@
 import React from "react";
 import s from './PostInfo.css';
 import Post from "./post_block/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/State";
+import {addPostCreator, updateNewPostTextCreator} from "../../../redux/State";
 
 
 
@@ -13,13 +13,13 @@ const Posts = (props) => {
 
     let newPostTextArea = () => {
         //props.addPost()
-        props.dispatch (addPostActionCreator());
+        props.dispatch (addPostCreator());
     };
 
     let onPostChange = () => {
         let text = newInputValue.current.value;
         // let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
-        let action = updateNewPostTextActionCreator(text);
+        let action = updateNewPostTextCreator(text);
         props.dispatch(action);
     };
 
