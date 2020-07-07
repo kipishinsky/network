@@ -1,9 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header/Header.jsx";
-import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Main/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter} from "react-router-dom"; /*устанавливаем реакт роутер дом
 команда в консоле
 npm i react-router-dom -save (флаг -save означает что нужно внести
@@ -13,6 +9,11 @@ npm i react-router-dom -save (флаг -save означает что нужно 
 при новой компиляции кем либо нужно будет прописать npm install и все будет работать
  */
 import {Route} from "react-router-dom"
+import Header from "./components/header/Header";
+import Navbar from "./components/navbar/Navbar";
+import Profile from "./components/profile/Profile";
+import Dialogs from "./components/dialogs/Dialogs";
+
 
 
 const App = (props) => {
@@ -38,7 +39,7 @@ const App = (props) => {
                   {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
                   <Route exact path={'/profile'} render={ () =>
                       <Profile
-                          state={props.state.profilePage}
+                          state={props.state}
                           dispatch={props.dispatch}
                       />
                   }/>
