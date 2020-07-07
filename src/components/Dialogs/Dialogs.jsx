@@ -8,20 +8,22 @@ import {sendMessageCreator, updateNewMessageTextDialogsCreator} from "../../redu
 
 const Dialogs = (props) => {
 
-    let state = props.store.getState().dialogsPage
-    let store = props.store._state.dialogsPage
+    debugger
 
-    let dialogsElements = store.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
-    let messagesElements = store.messages.map ( m => <Message message={m.message}/> );
+    let state = props.dialogsPage
+
+    let dialogsElements = state.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
+    let messagesElements = state.messages.map ( m => <Message message={m.message}/> );
     let newMessageTextDialogs = state.newMessageTextDialogs
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage();
     }
     let onNewMessageChange = (e) => {
         let newMessage = e.target.value;
-        props.store.dispatch(updateNewMessageTextDialogsCreator(newMessage))
+        props.updateNewMessageChange(newMessage)
     }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

@@ -12,17 +12,17 @@ import {Route} from "react-router-dom"
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
-import Dialogs from "./components/dialogs/Dialogs";
+import DialogsContainer from "./components/dialogs/DialogsContainer";
 
 const App = (props) => {
-    debugger
-  return (
-      <BrowserRouter>
-          <div className={'app-wrapper'}>
-              <Header/>
-              <Navbar/>
-              <div className={'app-wrapper-content'}>
-                  {/*добавляем роутинг нашим компонентам,
+debugger
+    return (
+        <BrowserRouter>
+            <div className={'app-wrapper'}>
+                <Header/>
+                <Navbar/>
+                <div className={'app-wrapper-content'}>
+                    {/*добавляем роутинг нашим компонентам,
                   чтобы путь отображался кореектно для каждой страницы
 
                   в 27 уроке, прокидываем пропты в route
@@ -33,24 +33,23 @@ const App = (props) => {
                   рендер возвращает функцию, которая возвращает jsx. если идти через компоненту
                   то можно передать только компоненту
                   */}
-                  {/*<Route exact path={'/profile'} component={Profile}/>*/}
-                  {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
-                  <Route exact path={'/profile'} render={ () =>
-                      <Profile
-                          profilePage={props.state.profilePage}
-                          dispatch={props.store.dispatch}
-                      />
-                  }/>
-                  <Route exact path={'/dialogs'} render={() =>
-                      <Dialogs
-                          store={props.store}
-                          dialogsPage={props.state.dialogsPage}
-                      />
-                  }/>
-              </div>
-          </div>
-      </BrowserRouter>
-  );
+                    {/*<Route exact path={'/profile'} component={Profile}/>*/}
+                    {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
+                    <Route exact path={'/profile'} render={() =>
+                        <Profile
+                            store={props.store}
+                        />
+                    }/>
+                    <Route exact path={'/dialogs'} render={() =>
+                        <DialogsContainer
+                            store={props.store}
+                            state={props.state}
+                        />
+                    }/>
+                </div>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
