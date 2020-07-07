@@ -1,13 +1,14 @@
 import React from 'react';
-import * as serviceWorker from './serviceWorker';
-import store from "./redux/store";
 import ReactDOM from 'react-dom';
+/*import store from "./redux/store";*/
+import store from "./redux/redux-store";
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-
+import * as serviceWorker from './serviceWorker';
 
 let rerenderEntireTree = (state) => {
+    debugger
     ReactDOM.render(
         <BrowserRouter>
             <App
@@ -15,11 +16,17 @@ let rerenderEntireTree = (state) => {
                 dispatch={store.dispatch.bind(store)}
                 store={store}
             />
-        </BrowserRouter>, document.getElementById('root'));
+        </BrowserRouter>,document.getElementById('root'));
 };
 rerenderEntireTree(store.getState());
-store.subscribe(rerenderEntireTree);
+store.subscribe( () => {
+    let state = store.getState()
+    rerenderEntireTree(state);
 
+});
+/*
+store.subscribe(rerenderEntireTree)
+*/
 
 //ReactDOM.render(<App state={state} addPost={addPost}/>, document.getElementById('root'));
 

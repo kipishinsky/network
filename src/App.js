@@ -14,10 +14,8 @@ import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import Dialogs from "./components/dialogs/Dialogs";
 
-
-
 const App = (props) => {
-
+    debugger
   return (
       <BrowserRouter>
           <div className={'app-wrapper'}>
@@ -39,17 +37,17 @@ const App = (props) => {
                   {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
                   <Route exact path={'/profile'} render={ () =>
                       <Profile
-                          state={props.state}
-                          dispatch={props.dispatch}
+                          profilePage={props.state.profilePage}
+                          dispatch={props.store.dispatch}
                       />
                   }/>
                   <Route exact path={'/dialogs'} render={() =>
                       <Dialogs
                           store={props.store}
+                          dialogsPage={props.state.dialogsPage}
                       />
                   }/>
               </div>
-
           </div>
       </BrowserRouter>
   );

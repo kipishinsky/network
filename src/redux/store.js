@@ -4,6 +4,7 @@ import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
 let store = {
+
     _state: {
         profilePage: {
             posts: [
@@ -34,6 +35,7 @@ let store = {
         },
         sidebar: {}
     },
+
     _callSubscriber () {
         console.log ('state changed');
     },
@@ -41,16 +43,15 @@ let store = {
     getState () {
         return this._state;
     },
+
     subscribe (observer) {
         this._callSubscriber = observer;
     },
 
     dispatch (action) { // action - это объект { type: 'ADD-POST'}
-
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
-
         this._callSubscriber(this._state);
     }
 
