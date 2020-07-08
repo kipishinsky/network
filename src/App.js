@@ -1,13 +1,4 @@
 import React from 'react';
-
-import {BrowserRouter} from "react-router-dom"; /*устанавливаем реакт роутер дом
-команда в консоле
-npm i react-router-dom -save (флаг -save означает что нужно внести
-запись в packagejson файл - сохранит все зависимости и улетит на гит.
-при клонированнии репазы с гита, не будет проблем с зависимостями
-
-при новой компиляции кем либо нужно будет прописать npm install и все будет работать
- */
 import {Route} from "react-router-dom"
 
 import Header from "./components/header/Header";
