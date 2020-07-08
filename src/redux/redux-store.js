@@ -4,12 +4,19 @@ import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
 
-let reducers = combineReducers({ // склеивает редьюсеры в одно и передает в стор
-    profilePage: profileReducer,
+let reducers = combineReducers({ /*
+склеивает редьюсеры в одно и передает в стор
+ */
+    profilePage: profileReducer, /*
+     profilePage - название ссылки на редьюсер. :
+ profileReducer - подключаемая компонента import profileReducer from "./profile-reducer";
+      */
     dialogsPage: dialogsReducer,
     sidebar: sidebarReducer
 });
 
-let store = createStore(reducers); // создает стор
-
+let store = createStore(reducers); /*
+создает стор - createStore, в параметры приходят сразу все редьюсеры,
+которые объединяются при помощи подкапотной функции combineReducers (которая в
+параметры принимает объект со всеми ссылками на редьюсеры) */
 export default store;

@@ -1,7 +1,9 @@
+// собственный редакс
+
 import cat from '../image/cat.jpg'
-import profileReducer from "./profile-reducer";
+/*import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer";
+import sidebarReducer from "./sidebar-reducer";*/
 
 let store = {
 

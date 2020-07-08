@@ -1,7 +1,7 @@
 import cat from "../image/cat.jpg";
 
-const UPDATE_NEW_MESSAGE_TEXT_DIALOGS = 'UPDATE_NEW_MESSAGE_TEXT_DIALOGS';
-const SEND_MESSAGE = 'SEND_MESSAGE'
+const PUSH_NEW_MESSAGE_TEXT_DIALOGS = 'PUSH_NEW_MESSAGE_TEXT_DIALOGS';
+const ADD_NEW_MESSAGE_TEXTAREA = 'ADD_NEW_MESSAGE_TEXTAREA';
 
 let initialState = {
     dialogs: [
@@ -19,14 +19,14 @@ let initialState = {
         {id: 5, message: "I like to create web-sites"}
     ],
     newMessageTextDialogs: ''
-}
+};
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT_DIALOGS:
+        case PUSH_NEW_MESSAGE_TEXT_DIALOGS:
             state.newMessageTextDialogs = action.newMessageDialogs;
             return state;
-        case SEND_MESSAGE:
+        case ADD_NEW_MESSAGE_TEXTAREA:
             let newMessage = state.newMessageTextDialogs;
             state.newMessageTextDialogs = '';
             state.messages.push({id: 6, message: newMessage});
@@ -34,9 +34,9 @@ const dialogsReducer = (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
 
 export default dialogsReducer;
 
-export const updateNewMessageTextDialogsCreator = (newMess) => ({type: UPDATE_NEW_MESSAGE_TEXT_DIALOGS, newMessageDialogs: newMess})
-export const sendMessageCreator = () => ({type: SEND_MESSAGE})
+export const pushNewMessageTextDialogsCreator = (newMess) => ({type: PUSH_NEW_MESSAGE_TEXT_DIALOGS, newMessageDialogs: newMess});
+export const sendMessageCreator = () => ({type: ADD_NEW_MESSAGE_TEXTAREA});

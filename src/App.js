@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+
 import {BrowserRouter} from "react-router-dom"; /*устанавливаем реакт роутер дом
 команда в консоле
 npm i react-router-dom -save (флаг -save означает что нужно внести
@@ -9,46 +9,54 @@ npm i react-router-dom -save (флаг -save означает что нужно 
 при новой компиляции кем либо нужно будет прописать npm install и все будет работать
  */
 import {Route} from "react-router-dom"
+
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 
-const App = (props) => {
-debugger
+import './App.css';
+
+
+const App = (props) => { /*
+    в пропсах пришли:
+        state: все редьюсеры,
+        store: весь подключенный стор со всеми его подкапотными функциями
+*/
+
     return (
-        <BrowserRouter>
-            <div className={'app-wrapper'}>
-                <Header/>
-                <Navbar/>
-                <div className={'app-wrapper-content'}>
-                    {/*добавляем роутинг нашим компонентам,
-                  чтобы путь отображался кореектно для каждой страницы
-
-                  в 27 уроке, прокидываем пропты в route
-                  route может принимать в пропсах компоненту, либо рендер
-                  мы идем по пути рендинга и передает рендингу функцию, а в ней
-                  уже передаем компоненты с нужными нам параметрами
-
-                  рендер возвращает функцию, которая возвращает jsx. если идти через компоненту
-                  то можно передать только компоненту
-                  */}
-                    {/*<Route exact path={'/profile'} component={Profile}/>*/}
-                    {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
-                    <Route exact path={'/profile'} render={() =>
+        <div className={'app-wrapper'}>
+            <Header/>
+            <Navbar/>
+            <div className={'app-wrapper-content'}>
+                {/*
+                    Альтернативный роутинг:
+                        <Route exact path={'/profile'} component={Profile}/>
+                        <Route exact path={'/dialogs'} component={Dialogs}/>
+                */}
+                <Route // рендерит если сменился урл
+                    exact path={'/profile'}
+                    render={ () =>
                         <Profile
-                            store={props.store}
+                            store={props.store} /*
+                                store: весь подключенный стор со всеми его подкапотными функциями
+                            */
                         />
                     }/>
-                    <Route exact path={'/dialogs'} render={() =>
+                <Route // рендерит если сменился урл
+                    exact path={'/dialogs'}
+                    render={ () =>
                         <DialogsContainer
-                            store={props.store}
-                            state={props.state}
+                            store={props.store} /*
+                                store: весь подключенный стор со всеми его подкапотными функциями
+                            */
+                            state={props.state} /*
+                                state: все редьюсеры
+                            */
                         />
                     }/>
-                </div>
             </div>
-        </BrowserRouter>
+        </div>
     );
 }
 

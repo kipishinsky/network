@@ -2,49 +2,49 @@ import React from "react";
 import s from './Dialogs.module.css' // модульный файл css
 import DialogItem from "./dialogItem/DialogItem";
 import Message from "./message/Message";
-import {sendMessageCreator, updateNewMessageTextDialogsCreator} from "../../redux/dialogs-reducer";
 
 
+const Dialogs = (props) => {  /*
+    пришли:
+        state: весь
+        2 колбек функции для передачи экшенов
+ */
 
-const Dialogs = (props) => {
+    let userDialogsElements = props.state.dialogsPage.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
+    let userMessagesElements = props.state.dialogsPage.messages.map ( m => <Message message={m.message}/> );
+    let newMessageTextValue = props.state.dialogsPage.newMessageTextDialogs
 
-    debugger
-
-    let state = props.dialogsPage
-
-    let dialogsElements = state.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
-    let messagesElements = state.messages.map ( m => <Message message={m.message}/> );
-    let newMessageTextDialogs = state.newMessageTextDialogs
-
-    let onSendMessageClick = () => {
-        props.sendMessage();
+    /*
+        добавление сообщения в сообщениях диалогов
+    */
+    let addNewMessageButtonClick = () => {
+        props.newMessageDialogsCallbackProps();
     }
-    let onNewMessageChange = (e) => {
+    let addNewMessageTextarea = (e) => {
         let newMessage = e.target.value;
-        props.updateNewMessageChange(newMessage)
+        props.newMessageButtonClickCallbackProps(newMessage)
     }
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {dialogsElements}
+                {userDialogsElements} {/* отрисовываем диалоги */}
             </div>
             <div className={s.messages}>
-                <div>{messagesElements}</div>
+                <div>{userMessagesElements}</div> {/* отрисовываем сами сообщения  */}
                 <div>
+                    {/*
+                        добавление сообщения в сообщениях пользователей
+                    */}
                     <div>
                         <textarea
                             placeholder={'Enter your message'}
-                            value={newMessageTextDialogs}
-                            onChange={onNewMessageChange}
-                        >
-
+                            value={newMessageTextValue}
+                            onChange={addNewMessageTextarea}>
                         </textarea>
                     </div>
                     <div>
-                        <button
-                            onClick={onSendMessageClick}
-                        >
+                        <button onClick={addNewMessageButtonClick}>
                             Send
                         </button>
                     </div>
