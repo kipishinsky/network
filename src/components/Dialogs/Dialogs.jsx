@@ -10,6 +10,8 @@ const Dialogs = (props) => {  /*
         2 колбек функции для передачи экшенов
  */
 
+
+
     let userDialogsElements = props.state.dialogsPage.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
     let userMessagesElements = props.state.dialogsPage.messages.map ( m => <Message message={m.message}/> );
     let newMessageTextValue = props.state.dialogsPage.newMessageTextDialogs
@@ -17,13 +19,16 @@ const Dialogs = (props) => {  /*
     /*
         добавление сообщения в сообщениях диалогов
     */
-    let addNewMessageButtonClick = () => {
-        props.newMessageDialogsCallbackProps();
+
+    let addNewValueMessageTextarea = (e) => {
+        let newMessageValue = e.target.value;
+        props.addNewValueTextDialogsCallbackProps(newMessageValue)
     }
-    let addNewMessageTextarea = (e) => {
-        let newMessage = e.target.value;
-        props.newMessageButtonClickCallbackProps(newMessage)
+    let pushNewMessageButtonClick = () => {
+        props.pushNewMessageButtonClickCallbackProps();
     }
+
+
 
     return (
         <div className={s.dialogs}>
@@ -40,11 +45,11 @@ const Dialogs = (props) => {  /*
                         <textarea
                             placeholder={'Enter your message'}
                             value={newMessageTextValue}
-                            onChange={addNewMessageTextarea}>
+                            onChange={addNewValueMessageTextarea}>
                         </textarea>
                     </div>
                     <div>
-                        <button onClick={addNewMessageButtonClick}>
+                        <button onClick={pushNewMessageButtonClick}>
                             Send
                         </button>
                     </div>

@@ -1,5 +1,5 @@
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const PUSH_NEW_POST_PROFILE = 'PUSH_NEW_POST_PROFILE';
+const ADD_NEW_VALUE_TEXT = 'ADD_NEW_VALUE_TEXT';
 
 let initialState = {
     posts: [
@@ -14,7 +14,7 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
+        case PUSH_NEW_POST_PROFILE:
             let newPost = {
                 id: 6,
                 message: state.newPostText,
@@ -23,7 +23,7 @@ const profileReducer = (state = initialState, action) => {
             state.posts.push(newPost);
             state.newPostText = '';
             return state;
-        case UPDATE_NEW_POST_TEXT:
+        case ADD_NEW_VALUE_TEXT:
             state.newPostText = action.newText;
             return state;
         default:
@@ -32,5 +32,5 @@ const profileReducer = (state = initialState, action) => {
 }
 
 export default profileReducer;
-export const addPostCreator = () => ({type: ADD_POST})
-export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const pushNewPostProfileCreator = () => ({type: PUSH_NEW_POST_PROFILE})
+export const addNewValueProfileCreator = (text) => ({type: ADD_NEW_VALUE_TEXT, newText: text})
