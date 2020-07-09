@@ -2,9 +2,12 @@ import React from 'react';
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
+import UsersContainer from "./components/users/UsersContainer";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import {Route} from "react-router-dom"
 import './App.css';
+
+
 
 const App = () => {
     return (
@@ -13,12 +16,16 @@ const App = () => {
             <Navbar/>
             <div className={'app-wrapper-content'}>
                 <Route
-                    exact path={'/profile'}
+                    path={'/profile'}
                     render={ () => <Profile/> }
                 />
                 <Route
-                    exact path={'/dialogs'}
+                    path={'/dialogs'}
                     render={ () =>  <DialogsContainer/> }
+                />
+                <Route
+                    path={'/users'}
+                    render={ () => <UsersContainer /> }
                 />
             </div>
         </div>

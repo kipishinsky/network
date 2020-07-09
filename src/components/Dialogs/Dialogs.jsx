@@ -10,8 +10,8 @@ const Dialogs = (props) => {  /*
         2 колбек функции для передачи экшенов
  */
 
-    let userDialogsElements = props.dialogsPage.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
-    let userMessagesElements = props.dialogsPage.messages.map ( m => <Message message={m.message}/> );
+    let userDialogsElements = props.dialogsPage.dialogs.map ( d => <DialogItem name={d.name} key={d.id} id={d.id} img={d.img}/> );
+    let userMessagesElements = props.dialogsPage.messages.map ( m => <Message key={m.id} message={m.message}/> );
     let newMessageTextValue = props.dialogsPage.newMessageTextDialogs
 
     /*

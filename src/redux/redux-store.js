@@ -2,6 +2,7 @@ import {combineReducers, createStore} from "redux";
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
+import usersReducer from "./users_reducer";
 
 let reducers = combineReducers({ /*
 склеивает редьюсеры в одно и передает в стор
@@ -11,7 +12,8 @@ let reducers = combineReducers({ /*
  profileReducer - подключаемая компонента import profileReducer from "./profile-reducer";
       */
     dialogsPage: dialogsReducer,
-    sidebar: sidebarReducer
+    sidebar: sidebarReducer,
+    usersPage: usersReducer
 });
 
 let store = createStore(reducers); /*
