@@ -21,21 +21,21 @@ let initialState = {
     newMessageTextDialogs: ''
 };
 
-debugger
-
 const dialogsReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case PUSH_NEW_MESSAGE_BUTTON:
-            let stateCopyPush = {...state};
-            stateCopyPush.messages = [...state.messages];
-            let newMessage = stateCopyPush.newMessageTextDialogs;
-            stateCopyPush.newMessageTextDialogs = '';
-            stateCopyPush.messages.push({id: 6, message: newMessage});
-            return stateCopyPush;
+            let newMessage = state.newMessageTextDialogs;
+            return {
+                ...state,
+                newMessageTextDialogs: '',
+                messages: [...state.messages, {id: 6, message: newMessage}]
+            }
         case ADD_NEW_VALUE_TEXT_DIALOGS:
-            let stateCopyValue = {...state}
-            stateCopyValue.newMessageTextDialogs = action.newMessageDialogs;
-            return stateCopyValue;
+            return {
+                ...state,
+                newMessageTextDialogs: action.newMessageDialogs
+            }
         default:
             return state;
     }

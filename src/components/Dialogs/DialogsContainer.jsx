@@ -29,7 +29,6 @@ const DialogsContainer = connect(mapStateToProps,mapDispatchToProps)(Dialogs); /
  */
 export default DialogsContainer;
 
-
 /*
 
 const DialogsContainer = (props) => {

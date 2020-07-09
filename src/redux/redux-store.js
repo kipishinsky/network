@@ -3,7 +3,6 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
-
 let reducers = combineReducers({ /*
 склеивает редьюсеры в одно и передает в стор
  */
@@ -20,3 +19,5 @@ let store = createStore(reducers); /*
 которые объединяются при помощи подкапотной функции combineReducers (которая в
 параметры принимает объект со всеми ссылками на редьюсеры) */
 export default store;
+
+window.store = store;
