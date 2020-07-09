@@ -46,6 +46,21 @@ const App = (props) => { /*
                             */
                         />
                     }/>
+
+                {/*
+
+                // store context
+                <Route
+                    exact path={'/profile'}
+                    render={ () => <Profile/> }
+                />
+                <Route
+                    exact path={'/dialogs'}
+                    render={ () =>  <DialogsContainer/> }
+                />
+
+
+                */}
             </div>
         </div>
     );

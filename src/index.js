@@ -39,6 +39,18 @@ let rerenderEntireTree = (state) => { /*
                 */
             />
         </BrowserRouter>, document.getElementById('root'));
+
+    {/*
+            // контекст api
+            need imports
+
+            <BrowserRouter>
+                <provider store={store}>
+                    <App/>
+                </provider>
+            </BrowserRouter>, document.getElementById('root'));
+
+            */}
 };
 
 rerenderEntireTree(store.getState()); /*

@@ -35,6 +35,39 @@ const MyPostsContainer = (props) => {  /*
             posts={state.profilePage.posts}
             newPostText={state.profilePage.newPostText}
         />
+
+
+        /*
+
+        // store context
+
+        <StoreContext.Consumer>
+        // очень важно, чтобы фигур.скобки были с новой строки
+            { (store) => {
+
+                let state = store.getState();
+
+                let pushNewPostTextAreaProfileCallback = () => {
+                    store.dispatch(pushNewPostProfileCreator());
+                };
+                let addNewValueTextProfileCallback = (text) => {
+                    let action = addNewValueProfileCreator(text);
+                    store.dispatch(action);
+                };
+
+                return <Posts
+                            addNewValueText={addNewValueTextProfileCallback}
+                            pushNewPost={pushNewPostTextAreaProfileCallback}
+                            posts={state.profilePage.posts}
+                            newPostText={state.profilePage.newPostText}
+                        />
+                }
+            }
+        </StoreContext.Consumer>
+
+
+
+        */
     )
 };
 export default MyPostsContainer;
