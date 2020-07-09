@@ -7,27 +7,14 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import './index.css';
 
-let rerenderEntireTree = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </BrowserRouter>, document.getElementById('root'));
-};
 
-rerenderEntireTree();
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </BrowserRouter>, document.getElementById('root'));
 
-store.subscribe(() => { /*
-    Добавляет слушателя. Он будет вызываться каждый раз, когда экшен отправлен и
-    некоторая часть дерева состояния могла потенциально измениться.
-    Вы можете затем вызвать getState(), для того, чтобы прочитать текущее состояние
-    дерева стора внутри обратного вызова.
-*/
-    rerenderEntireTree(); /*
-     перерисуй все дерево
-     */
-});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
