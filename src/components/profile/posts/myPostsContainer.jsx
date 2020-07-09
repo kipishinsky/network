@@ -1,31 +1,61 @@
 import React from "react";
 import {pushNewPostProfileCreator, addNewValueProfileCreator} from "../../../redux/profile-reducer";
 import Posts from "./Posts";
+import {connect} from "react-redux";
 
-const MyPostsContainer = (props) => {  /*
+
+const mapStateToProps = (state) => {
+
+    return {
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        pushNewPostWall: () => {
+            dispatch(pushNewPostProfileCreator())
+        },
+        addNewValueInput: newText => {
+            let action = addNewValueProfileCreator(newText);
+            dispatch(action);
+        }
+    }
+}
+
+const MyPostsContainer = connect (mapStateToProps, mapDispatchToProps)(Posts); /*
+вызываем connect(), connect возвращает функцию которая в ней сидит и вторыми () мы вызываем функцию,
+ которая сидит в коннекте
+ */
+
+export default MyPostsContainer;
+
+/*
+const MyPostsContainer = (props) => {  /!*
         приходит store
-*/
+*!/
 
-    let state = props.store.getState();  /*
+    let state = props.store.getState();  /!*
         получить полный стор в виде: store = createStore(reducers);
-    */
+    *!/
 
     let pushNewPostTextAreaProfileCallback = () => {
-        props.store.dispatch(pushNewPostProfileCreator()); /*
+        props.store.dispatch(pushNewPostProfileCreator()); /!*
          передаем функцию (dispatch(action) - Отправляет экшен. Это единственный способ изменить состояние.
          Функция редюсера стора будет вызвана с текущим результатом getState() и переданным
          dispatch (action) синхронно. Возвращенное значения будет содержать следующие состояние.
          Оно будет возвращено из getState() сразу же и подписчики будут немедленно уведомлены.)
-        */
+        *!/
     };
     let addNewValueTextProfileCallback = (text) => {
         let action = addNewValueProfileCreator(text);
-        props.store.dispatch(action); /*
+        props.store.dispatch(action); /!*
          передаем функцию (dispatch(action) - Отправляет экшен. Это единственный способ изменить состояние.
          Функция редюсера стора будет вызвана с текущим результатом getState() и переданным
          dispatch (action) синхронно. Возвращенное значения будет содержать следующие состояние.
          Оно будет возвращено из getState() сразу же и подписчики будут немедленно уведомлены.)
-        */
+        *!/
     };
 
     return (
@@ -37,7 +67,7 @@ const MyPostsContainer = (props) => {  /*
         />
 
 
-        /*
+        /!*
 
         // store context
 
@@ -67,7 +97,6 @@ const MyPostsContainer = (props) => {  /*
 
 
 
-        */
+        *!/
     )
-};
-export default MyPostsContainer;
+};*/

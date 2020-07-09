@@ -21,6 +21,8 @@ let initialState = {
     newMessageTextDialogs: ''
 };
 
+debugger
+
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_VALUE_TEXT_DIALOGS:

@@ -10,11 +10,9 @@ const Dialogs = (props) => {  /*
         2 колбек функции для передачи экшенов
  */
 
-
-
-    let userDialogsElements = props.state.dialogsPage.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
-    let userMessagesElements = props.state.dialogsPage.messages.map ( m => <Message message={m.message}/> );
-    let newMessageTextValue = props.state.dialogsPage.newMessageTextDialogs
+    let userDialogsElements = props.dialogsPage.dialogs.map ( d => <DialogItem name={d.name} id={d.id} img={d.img}/> );
+    let userMessagesElements = props.dialogsPage.messages.map ( m => <Message message={m.message}/> );
+    let newMessageTextValue = props.dialogsPage.newMessageTextDialogs
 
     /*
         добавление сообщения в сообщениях диалогов
@@ -27,8 +25,6 @@ const Dialogs = (props) => {  /*
     let pushNewMessageButtonClick = () => {
         props.pushNewMessageButtonClickCallbackProps();
     }
-
-
 
     return (
         <div className={s.dialogs}>
