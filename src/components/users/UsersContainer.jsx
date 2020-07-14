@@ -1,5 +1,5 @@
 import React from 'react';
-import Users from "./Users";
+import UsersC from "./Users";
 import {connect} from "react-redux";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/users_reducer";
 
@@ -24,4 +24,4 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect (mapStateToProps, mapDispatchToProps) (Users);
+export default connect (mapStateToProps, mapDispatchToProps) (UsersC);
