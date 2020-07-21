@@ -2,21 +2,13 @@ import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import MyPostsContainer from "./posts/myPostsContainer";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
         </div>
     );
 }
 
 export default Profile;
-
-
-/*
-    <ProfileInfo/>
-    <MyPostsContainer
-        store={props.store}
-    />
-*/

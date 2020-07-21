@@ -1,5 +1,6 @@
 const PUSH_NEW_POST_PROFILE = 'PUSH_NEW_POST_PROFILE';
 const ADD_NEW_VALUE_TEXT = 'ADD_NEW_VALUE_TEXT';
+const SET_USERS_PROFILE = 'SET_USERS';
 
 let initialState = {
     posts: [
@@ -9,7 +10,9 @@ let initialState = {
         {id: 4, message: "I'm visiting my granny this weekend", likesCount: 10},
         {id: 5, message: "Frontend is more visual than backend", likesCount: 5}
     ],
-    newPostText: "enter text..."
+    newPostText: "enter text...",
+    profile: null
+
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -30,7 +33,10 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newPostText: action.newText
-            };
+            }
+        case SET_USERS_PROFILE:
+            debugger
+            return {...state, profile: action.profile}
         default:
             return state;
     }
@@ -39,3 +45,4 @@ const profileReducer = (state = initialState, action) => {
 export default profileReducer;
 export const pushNewPostProfileCreator = () => ({type: PUSH_NEW_POST_PROFILE})
 export const addNewValueProfileCreator = (text) => ({type: ADD_NEW_VALUE_TEXT, newText: text})
+export const setUsersProfile = (userId) => ({type: SET_USERS_PROFILE, profile: userId})

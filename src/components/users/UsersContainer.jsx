@@ -10,7 +10,7 @@ import {
 } from "../../redux/users_reducer";
 import * as axios from "axios";
 import Users from "./Users";
-import loaderUsers from "../../image/loaderUsers.svg";
+import Preloader from "../preloader/Preloader";
 
 let mapStateToProps = (state) => {
     return {
@@ -45,7 +45,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.props.isFetching ? <img src={loaderUsers} alt="Loading"/> : null}
+                {this.props.isFetching ? <Preloader /> : null}
                 <Users
                     totalUsersCount={this.props.totalUsersCount}
                     pageSize={this.props.pageSize}
@@ -61,10 +61,10 @@ class UsersContainer extends React.Component {
 }
 
 export default connect(mapStateToProps, {
-    follow: follow,
-    unfollow: unfollow,
-    setUsers: setUsers,
-    setCurrentPage: setCurrentPage,
-    setTotalUsersCount: setTotalUsersCount,
-    setIsFetching: setIsFetching
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    setIsFetching
 })(UsersContainer);
