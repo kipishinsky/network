@@ -1,6 +1,5 @@
 import React from "react";
 import s from './ProfileInfo.module.css'
-import loaderUsers from "../../../image/loaderUsers.svg";
 import Preloader from "../../preloader/Preloader";
 
 const ProfileInfo = (props) => {
