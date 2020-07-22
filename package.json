@@ -1,22 +1,23 @@
 {
-  "name": "network",
+  "name": "network-TS",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kipishinsky.github.io/network",
+  "homepage": "",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^26.0.4",
-    "@types/node": "^14.0.23",
-    "@types/react": "^16.9.43",
-    "@types/react-dom": "^16.9.8",
+    "@types/jest": "^26.0.5",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/react-router-redux": "^5.0.18",
     "axios": "^0.19.2",
     "gh-pages": "^2.2.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "typescript": "^3.9.7"
@@ -43,5 +44,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.24",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8"
   }
 }
