@@ -1,8 +1,22 @@
+import {profileResponseDataType} from "../components/profile/ProfileContainer";
+
 const PUSH_NEW_POST_PROFILE = 'PUSH_NEW_POST_PROFILE';
 const ADD_NEW_VALUE_TEXT = 'ADD_NEW_VALUE_TEXT';
 const SET_USERS_PROFILE = 'SET_USERS';
 
-let initialState =  <any> {
+type postsType = {
+    id: number,
+    message: string,
+    likesCount: number
+}
+
+type profileStateType = {
+    posts: Array<postsType>,
+    newPostText: string,
+    profile: null
+}
+
+let initialState: profileStateType = {
     posts: [
         {id: 1, message: "Hi", likesCount: 15},
         {id: 2, message: "Hi, how are you?", likesCount: 3},
@@ -12,8 +26,23 @@ let initialState =  <any> {
     ],
     newPostText: "enter text...",
     profile: null
-
 }
+
+type pushNewPostProfileACType = {
+    type: 'PUSH_NEW_POST_PROFILE'
+}
+
+type addNewValueProfileACType = {
+    type: 'ADD_NEW_VALUE_TEXT',
+    newText: string
+}
+
+type setUsersProfileType = {
+    type: 'SET_USERS_PROFILE',
+    profile: Array<profileResponseDataType>
+}
+
+type ActionType = pushNewPostProfileACType | addNewValueProfileACType | setUsersProfileType
 
 const profileReducer = (state = initialState, action: any) => {
 
@@ -35,6 +64,7 @@ const profileReducer = (state = initialState, action: any) => {
                 newPostText: action.newText
             }
         case SET_USERS_PROFILE:
+
             return {...state, profile: action.profile}
         default:
             return state;
@@ -43,5 +73,5 @@ const profileReducer = (state = initialState, action: any) => {
 
 export default profileReducer;
 export const pushNewPostProfileCreator = () => ({type: PUSH_NEW_POST_PROFILE})
-export const addNewValueProfileCreator = (text: any) => ({type: ADD_NEW_VALUE_TEXT, newText: text})
-export const setUsersProfile = (userId: any) => ({type: SET_USERS_PROFILE, profile: userId})
+export const addNewValueProfileCreator = (text: string) => ({type: ADD_NEW_VALUE_TEXT, newText: text})
+export const setUsersProfile = (userId: string) => ({type: SET_USERS_PROFILE, profile: userId})

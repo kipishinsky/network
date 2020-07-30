@@ -1,14 +1,14 @@
-
+import React from "react";
 // собственный редакс
 
-import cat from '../image/cat.jpg'
+/*import cat from '../image/cat.jpg'*/
 /*
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 */
 
-let store = <any> {
+/*let store = <any> {
 
     _state: {
         profilePage: {
@@ -63,7 +63,7 @@ let store = <any> {
         this._callSubscriber(this._state);
     }
 
-};
+};*/
 
-export default store;
+/*export default store;*/
 

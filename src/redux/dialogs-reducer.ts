@@ -3,7 +3,25 @@ import cat from "../image/cat.jpg";
 const ADD_NEW_VALUE_TEXT_DIALOGS = 'ADD_NEW_VALUE_TEXT_DIALOGS';
 const PUSH_NEW_MESSAGE_BUTTON = 'PUSH_NEW_MESSAGE_BUTTON';
 
-let initialState = {
+
+type dialogsType = {
+    id: number,
+    name: string,
+    img: string
+}
+
+interface dialogsMessagesType {
+    id: number,
+    message: string,
+}
+
+type dialogsStateType = {
+    dialogs: Array<dialogsType>,
+    messages: Array<dialogsMessagesType>,
+    newMessageTextDialogs: string
+}
+
+let initialState: dialogsStateType = {
     dialogs: [
         {id: 1, name: "Anton", img: cat},
         {id: 2, name: "Sveta", img: cat},
@@ -21,7 +39,21 @@ let initialState = {
     newMessageTextDialogs: ''
 };
 
-const dialogsReducer = (state = initialState, action: any) => {
+
+type addNewValueTextACType = {
+    type: 'ADD_NEW_VALUE_TEXT_DIALOGS',
+    newMessageDialogs: string
+}
+
+type pushNewMessageACType = {
+    type: 'PUSH_NEW_MESSAGE_BUTTON'
+}
+
+type ActionType =
+    addNewValueTextACType | pushNewMessageACType;
+
+
+const dialogsReducer = (state = initialState, action: ActionType) => {
 
     switch (action.type) {
         case PUSH_NEW_MESSAGE_BUTTON:
@@ -32,6 +64,7 @@ const dialogsReducer = (state = initialState, action: any) => {
                 messages: [...state.messages, {id: 6, message: newMessage}]
             }
         case ADD_NEW_VALUE_TEXT_DIALOGS:
+            debugger
             return {
                 ...state,
                 newMessageTextDialogs: action.newMessageDialogs
@@ -43,7 +76,7 @@ const dialogsReducer = (state = initialState, action: any) => {
 
 export default dialogsReducer;
 
-export const addNewValueTextDialogsCreator = (newMess: any) => ({type: ADD_NEW_VALUE_TEXT_DIALOGS, newMessageDialogs: newMess});
+export const addNewValueTextDialogsCreator = (newMess: string) => ({type: ADD_NEW_VALUE_TEXT_DIALOGS, newMessageDialogs: newMess});
 export const pushNewMessageButtonCreator = () => ({type: PUSH_NEW_MESSAGE_BUTTON});
 
 
