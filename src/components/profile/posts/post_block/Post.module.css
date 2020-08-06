@@ -1,10 +1,12 @@
 
 .item {
- color: darkturquoise;
+    color: darkturquoise;
+    padding: 5px;
 }
 
 .post_main {
     color: red;
+    padding: 5px;
 }
 
 .item img {
