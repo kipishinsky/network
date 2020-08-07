@@ -4,6 +4,7 @@ import userPhoto from "../../image/user_ava.jpg";
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
 import {followUsers, unfollowUsers, usersAPI} from "../../api/Api";
+import {setStateStickyButton} from "../../redux/users_reducer";
 
 let Users = (props: any) => {
 
@@ -12,7 +13,6 @@ let Users = (props: any) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
 
 
     return (
@@ -32,6 +32,7 @@ let Users = (props: any) => {
 
 
             {props.users.map((u: { id: string | number | undefined; followed: any; name: React.ReactNode; status: React.ReactNode; }) =>
+
                 <div key={u.id}>
                         <span>
                             <div>
@@ -40,25 +41,42 @@ let Users = (props: any) => {
                                 </NavLink>
                                 </div>
                             <div>
+
                                 {u.followed
 
                                     ?
 
-                                    <button onClick={ () => {
+                                    <button disabled={
                                         // @ts-ignore
-                                        followUsers(u.id).then( response => {
-                                            if (response.data.resultCode === false) {
-                                                props.unfollow(u.id)
-                                            }})}}>unfollow</button>
+
+                                        props.followingInProgress.some(id => u.id === u.id)}
+                                            onClick={() => {
+                                                props.setStateStickyButton(true, u.id)
+                                                // @ts-ignore
+                                                followUsers(u.id).then(data => {
+                                                    if (data.resultCode === false) {
+                                                        props.unfollow(u.id)
+                                                    }
+                                                    props.setStateStickyButton(false, u.id)
+                                                })
+                                            }}>unfollow</button>
 
                                     :
 
-                                    <button onClick={ () => {
+                                    <button disabled={
                                         // @ts-ignore
-                                        unfollowUsers(u.id).then( response => {
-                                            if (response.data.resultCode === false) {
-                                                props.follow(u.id)
-                                            }})}}>follow</button>
+                                        props.followingInProgress.some(id => u.id === u.id)}
+                                            onClick={() => {
+                                                props.setStateStickyButton(true, u.id)
+                                                // @ts-ignore
+                                                unfollowUsers(u.id).then(data => {
+                                                    if (data.resultCode === false) {
+                                                        props.follow(u.id)
+                                                    }
+                                                    props.setStateStickyButton(false, u.id)
+                                                })
+                                            }}>follow</button>
+
                                 }
                             </div>
                         </span>
@@ -81,8 +99,8 @@ let Users = (props: any) => {
                             </div>
                         </span>
 
-                </div>)
-            }
+                </div>
+            )}
 
         </div>
     )
