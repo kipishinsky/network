@@ -1,14 +1,12 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React from 'react'
+import {connect} from 'react-redux'
 import {
-    follow,
-    unfollow,
     getUsersThunkCreator,
     setCurrentPage,
     setStateStickyButton, followThunkCreator, unfollowThunkCreator,
-} from '../../redux/users_reducer';
-import Users from './Users';
-import Preloader from '../preloader/Preloader';
+} from '../../redux/users_reducer'
+import Users from './Users'
+import Preloader from '../preloader/Preloader'
 
 let mapStateToProps = (state: any) => {
     return {
@@ -18,18 +16,18 @@ let mapStateToProps = (state: any) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress
-    };
-};
+    }
+}
 
 class UsersContainer extends React.Component <any> {
 
     componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
     }
 
     pageChanged = (page: any) => {
-        this.props.getUsersThunkCreator(page, this.props.pageSize);
-    };
+        this.props.getUsersThunkCreator(page, this.props.pageSize)
+    }
 
     render() {
         return (
@@ -44,10 +42,9 @@ class UsersContainer extends React.Component <any> {
                     followThunkCreator={this.props.followThunkCreator}
                     unfollowThunkCreator={this.props.unfollowThunkCreator}
                     followingInProgress={this.props.followingInProgress}
-
                 />
             </div>
-        );
+        )
     }
 }
 
@@ -57,4 +54,4 @@ export default connect(mapStateToProps, {
     setCurrentPage,
     setStateStickyButton,
     getUsersThunkCreator
-})(UsersContainer);
+})(UsersContainer)

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 // собственный редакс
 
 /*import cat from '../image/cat.jpg'*/

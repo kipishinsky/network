@@ -1,7 +1,6 @@
-import {getMyAccountPage} from '../api/Api'
+import {getMyAccountPageAuthAPI} from '../api/Api'
 
-
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'SET_USER_DATA'
 
 let initialState = {
     id: null,
@@ -19,7 +18,7 @@ const authReducer = (state = initialState, action: any) => {
                 isAuth: true
             }
         default:
-            return state;
+            return state
     }
 }
 
@@ -27,7 +26,7 @@ export const setAuthUserData = (id: any, email: any, login: any) => ({type: SET_
 
 export const getMyAccountPageThunkCreator = () => {
     return (dispatch: any) => {
-        getMyAccountPage().then( (data:any) => {
+        getMyAccountPageAuthAPI().then( (data:any) => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data
                 // @ts-ignore
@@ -38,6 +37,6 @@ export const getMyAccountPageThunkCreator = () => {
 }
 
 
-export default authReducer;
+export default authReducer
 
 

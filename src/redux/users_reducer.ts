@@ -120,4 +120,4 @@ export const unfollowThunkCreator = (id: any) => {
     }
 }
 
-export default usersReducer;
+export default usersReducer

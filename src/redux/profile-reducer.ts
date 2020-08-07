@@ -1,6 +1,5 @@
 import {profileResponseDataType} from '../components/profile/ProfileContainer'
-import {getMyAccountPage, getMyProfilePageAPI} from '../api/Api'
-import {setAuthUserData} from './auth_reducer'
+import {getMyPageProfileAPI} from '../api/Api'
 
 const PUSH_NEW_POST_PROFILE = 'PUSH_NEW_POST_PROFILE'
 const ADD_NEW_VALUE_TEXT = 'ADD_NEW_VALUE_TEXT'
@@ -23,7 +22,7 @@ let initialState: profileStateType = {
         {id: 1, message: 'Hi', likesCount: 15},
         {id: 2, message: 'Hi, how are you?', likesCount: 3},
         {id: 3, message: 'How do you usually spend your free time?', likesCount: 24},
-        {id: 4, message: "I'm visiting my granny this weekend", likesCount: 10},
+        {id: 4, message: 'I\'m visiting my granny this weekend', likesCount: 10},
         {id: 5, message: 'Frontend is more visual than backend', likesCount: 5}
     ],
     newPostText: 'enter text...',
@@ -54,12 +53,12 @@ const profileReducer = (state = initialState, action: any) => {
                 id: 6,
                 message: state.newPostText,
                 likesCount: 0
-            };
+            }
             return {
                 ...state,
                 posts: [...state.posts, newPost],
                 newPostText: ''
-            };
+            }
         case ADD_NEW_VALUE_TEXT:
             return {
                 ...state,
@@ -81,11 +80,10 @@ export const setUsersProfile = (userId: string) => ({type: SET_USERS_PROFILE, pr
 export const getMyProfilePageThunkCreator = (userId: number) => {
     return (dispatch: any) => {
         // @ts-ignore
-        getMyProfilePageAPI(userId).then((data: any) => {
+        getMyPageProfileAPI(userId).then((data: any) => {
             dispatch(setUsersProfile(data))
         })
     }
 }
-
 
 export default profileReducer

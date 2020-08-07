@@ -3,7 +3,7 @@ let initialState = {
 }
 
 const sidebarReducer = (state = initialState, action: any) => {
-    return state;
+    return state
 }
 
-export default sidebarReducer;
+export default sidebarReducer

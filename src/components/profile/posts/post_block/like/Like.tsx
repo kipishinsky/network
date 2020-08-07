@@ -1,5 +1,5 @@
-import React from "react";
-import l from './Like.module.css';
+import React from 'react'
+import l from './Like.module.css'
 
 const Like = (props: any) => {
 
@@ -8,9 +8,8 @@ const Like = (props: any) => {
             <div>
                 <span> {props.likesCount} like</span>
             </div>
-         </div>
+        </div>
+    )
+}
 
-     );
-};
-
-export default Like;
+export default Like

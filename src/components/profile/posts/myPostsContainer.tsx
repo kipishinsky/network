@@ -1,8 +1,7 @@
-import React from "react";
-import {pushNewPostProfileCreator, addNewValueProfileCreator} from "../../../redux/profile-reducer";
-import Posts from "./Posts";
-import {connect} from "react-redux";
-
+import React from 'react'
+import {pushNewPostProfileCreator, addNewValueProfileCreator} from '../../../redux/profile-reducer'
+import Posts from './Posts'
+import {connect} from 'react-redux'
 
 const mapStateToProps = (state: any) => {
 
@@ -11,6 +10,7 @@ const mapStateToProps = (state: any) => {
         newPostText: state.profilePage.newPostText
     }
 }
+
 const mapDispatchToProps = (dispatch: any) => {
 
     return {
@@ -24,12 +24,12 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-const MyPostsContainer = connect (mapStateToProps, mapDispatchToProps)(Posts); /*
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts) /*
 вызываем connect(), connect возвращает функцию которая в ней сидит и вторыми () мы вызываем функцию,
  которая сидит в коннекте
  */
 
-export default MyPostsContainer;
+export default MyPostsContainer
 
 /*
 const MyPostsContainer = (props) => {  /!*
