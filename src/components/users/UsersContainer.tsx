@@ -1,17 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as axios from 'axios';
 import {
-    follow, getUsersThunkCreator,
+    follow,
+    unfollow,
+    getUsersThunkCreator,
     setCurrentPage,
-    setIsFetching, setStateStickyButton,
-    setTotalUsersCount,
-    setUsers,
-    unfollow
+    setStateStickyButton, followThunkCreator, unfollowThunkCreator,
 } from '../../redux/users_reducer';
 import Users from './Users';
 import Preloader from '../preloader/Preloader';
-import {getUsers, usersAPI} from '../../api/Api';
 
 let mapStateToProps = (state: any) => {
     return {
@@ -27,26 +24,11 @@ let mapStateToProps = (state: any) => {
 class UsersContainer extends React.Component <any> {
 
     componentDidMount() {
-
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
-        /*this.props.setIsFetching(true)
-        // @ts-ignore
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-
-            this.props.setUsers(data.items)
-            this.props.setTotalUsersCount(data.totalCount)
-            this.props.setIsFetching(false)
-        });*/
     }
 
     pageChanged = (page: any) => {
-        this.props.setIsFetching(true);
-        this.props.setCurrentPage(page);
-        // @ts-ignore
-        getUsers(page, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items);
-            this.props.setIsFetching(false);
-        });
+        this.props.getUsersThunkCreator(page, this.props.pageSize);
     };
 
     render() {
@@ -59,10 +41,10 @@ class UsersContainer extends React.Component <any> {
                     currentPage={this.props.currentPage}
                     pageChanged={this.pageChanged}
                     users={this.props.users}
-                    follow={this.props.follow}
-                    unfollow={this.props.unfollow}
+                    followThunkCreator={this.props.followThunkCreator}
+                    unfollowThunkCreator={this.props.unfollowThunkCreator}
                     followingInProgress={this.props.followingInProgress}
-                    setStateStickyButton={this.props.setStateStickyButton}
+
                 />
             </div>
         );
@@ -70,12 +52,9 @@ class UsersContainer extends React.Component <any> {
 }
 
 export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
+    followThunkCreator,
+    unfollowThunkCreator,
     setCurrentPage,
-    setTotalUsersCount,
-    setIsFetching,
     setStateStickyButton,
     getUsersThunkCreator
 })(UsersContainer);
