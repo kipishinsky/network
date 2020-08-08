@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './users.module.css'
 import userPhoto from '../../image/user_ava.jpg'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Redirect} from 'react-router-dom'
 
 
 let Users = (props: any) => {

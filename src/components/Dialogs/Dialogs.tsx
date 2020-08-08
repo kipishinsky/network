@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react'
 import s from './Dialogs.module.css' // модульный файл css
-import DialogItem from "./dialogItem/DialogItem";
-import Message from "./message/Message";
+import DialogItem from './dialogItem/DialogItem'
+import Message from './message/Message'
+import { Redirect } from 'react-router-dom'
 
 
 const Dialogs = (props: any) => {
 
-    let userDialogsElements = props.dialogsPage.dialogs.map ( (d: { name: any; id: any; img: any; }) => <DialogItem name={d.name} key={d.id} id={d.id} img={d.img}/> );
-    let userMessagesElements = props.dialogsPage.messages.map ( (m: { id: any; message: any; }) => <Message key={m.id} message={m.message}/> );
+    let userDialogsElements = props.dialogsPage.dialogs.map((d: { name: any; id: any; img: any; }) => <DialogItem
+        name={d.name} key={d.id} id={d.id} img={d.img}/>)
+    let userMessagesElements = props.dialogsPage.messages.map((m: { id: any; message: any; }) => <Message key={m.id} message={m.message}/>)
     let newMessageTextValue = props.dialogsPage.newMessageTextDialogs
 
     /*
@@ -19,7 +21,11 @@ const Dialogs = (props: any) => {
         props.addNewValueTextDialogsCallbackProps(newMessageValue)
     }
     let pushNewMessageButtonClick = () => {
-        props.pushNewMessageButtonClickCallbackProps();
+        props.pushNewMessageButtonClickCallbackProps()
+    }
+
+    if (!props.isAuth) {
+        return <Redirect to={'/login'}/>
     }
 
     return (
@@ -28,7 +34,8 @@ const Dialogs = (props: any) => {
                 {userDialogsElements} {/* отрисовываем диалоги */}
             </div>
             <div className={s.messages}>
-                <div>{userMessagesElements}</div> {/* отрисовываем сами сообщения  */}
+                <div>{userMessagesElements}</div>
+                {/* отрисовываем сами сообщения  */}
                 <div>
                     {/*
                         добавление сообщения в сообщениях пользователей
@@ -49,6 +56,6 @@ const Dialogs = (props: any) => {
             </div>
         </div>
     )
-};
+}
 
-export default Dialogs;
+export default Dialogs

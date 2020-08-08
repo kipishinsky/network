@@ -1,11 +1,13 @@
 import React from 'react'
-import Navbar from './components/navbar/Navbar'
-import ProfileContainer from './components/profile/ProfileContainer'
-import UsersContainer from './components/users/UsersContainer'
-import DialogsContainer from './components/dialogs/DialogsContainer'
+import Navbar from '../navbar/Navbar'
+import ProfileContainer from '../profile/ProfileContainer'
+import UsersContainer from '../users/UsersContainer'
+import DialogsContainer from '../dialogs/DialogsContainer'
 import './App.css'
 import {Route} from 'react-router-dom'
-import HeaderContainer from './components/header/HeaderContainer'
+import HeaderContainer from '../header/HeaderContainer'
+import Login from '../login/Login'
+
 
 const App = () => {
     return (
@@ -24,6 +26,10 @@ const App = () => {
                 <Route
                     path={'/users'}
                     render={() => <UsersContainer/>}
+                />
+                <Route
+                    path={'/login'}
+                    render={() => <Login />}
                 />
             </div>
         </div>
