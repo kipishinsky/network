@@ -8,6 +8,7 @@ import {
 import Users from './Users'
 import Preloader from '../preloader/Preloader'
 import {Redirect} from 'react-router-dom'
+import {compose} from 'redux'
 
 let mapStateToProps = (state: any) => {
     return {
@@ -54,6 +55,14 @@ class UsersContainer extends React.Component <any> {
         )
     }
 }
+
+/*compose (connect(mapStateToProps, {
+    followThunkCreator,
+    unfollowThunkCreator,
+    setCurrentPage,
+    setStateStickyButton,
+    getUsersThunkCreator
+})) (UsersContainer)*/
 
 export default connect(mapStateToProps, {
     followThunkCreator,

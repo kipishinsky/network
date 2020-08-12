@@ -4,6 +4,7 @@ import {getMyProfilePageThunkCreator, setUsersProfile} from '../../redux/profile
 import {connect} from 'react-redux'
 import {Redirect, withRouter} from 'react-router-dom'
 import {withAuthRedirect} from '../../hoc/WithAuthRedirect'
+import {compose} from 'redux'
 
 export type profileResponseDataType = {
     aboutMe: string,
@@ -45,6 +46,13 @@ class ProfileContainer extends React.Component <any> {
     }
 }
 
+
+// @ts-ignore
+/*compose(
+    connect(mapStateToProps, {setUsersProfile, getMyProfilePageThunkCreator}),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer)*/
 
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
