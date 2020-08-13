@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import s from './ProfileInfo.module.css'
 
 type PropsType = {
-    status: string
+    status: string,
+    updateStatus: () => void
 }
 
 export default class ProfileStatus extends Component <PropsType> {
-
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
     activateEditMode = () => {
@@ -21,6 +22,13 @@ export default class ProfileStatus extends Component <PropsType> {
         this.setState({
             editMode: false
         })
+        // @ts-ignore
+        this.props.updateStatus(this.state.status)
+    }
+
+    onStatusChange = (e: any) => {
+
+        this.setState({status: e.target.value})
     }
 
     render() {
@@ -30,15 +38,16 @@ export default class ProfileStatus extends Component <PropsType> {
                 {!this.state.editMode ?
                 <div>
                     <span onClick={this.activateEditMode}>
-                        {this.props.status}
+                        {this.props.status || 'напиши'}
                     </span>
                 </div>
                 :
                 <div>
                     <input
+                        onChange={this.onStatusChange}
                         autoFocus={true}
                         onBlur={this.deactivateEditMode}
-                        value={this.props.status} />
+                        value={this.state.status} />
                 </div>
                 }
             </div>

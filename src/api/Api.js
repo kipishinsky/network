@@ -25,6 +25,14 @@ export const getMyAccountPageAuthAPI = () => {
     return settings.get(`auth/me`).then(response => response.data)
 }
 
+export const getStatusProfileAPI = (userId) => {
+    return settings.get(`profile/status/${userId}`).then(response => response.data)
+}
+
+export const updateStatusProfileAPI = () => {
+    return settings.put(`profile/status`).then(response => response.data)
+}
+
 export const usersAPI = {
     getUsers(currentPage, pageSize) {
         return settings.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
@@ -46,5 +54,11 @@ export const authAPI = {
 export const profileAPI = {
     getMyProfilePage (userId) {
         return settings.get(`profile/${userId}`).then(response => response.data)
+    },
+    getStatus(userId) {
+        return settings.get(`profile/status/${userId}`).then(response => response.data)
+    },
+    updateStatusProfileAPI(status) {
+        return settings.put(`profile/status`, status).then(response => response.data)
     }
 }

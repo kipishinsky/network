@@ -1,9 +1,10 @@
 import {profileResponseDataType} from '../components/profile/ProfileContainer'
-import {getMyPageProfileAPI} from '../api/Api'
+import {getMyPageProfileAPI, getStatusProfileAPI, updateStatusProfileAPI} from '../api/Api'
 
 const PUSH_NEW_POST_PROFILE = 'PUSH_NEW_POST_PROFILE'
 const ADD_NEW_VALUE_TEXT = 'ADD_NEW_VALUE_TEXT'
 const SET_USERS_PROFILE = 'SET_USERS'
+const SET_STATUS_PROFILE = 'SET_STATUS_PROFILE'
 
 type postsType = {
     id: number,
@@ -14,7 +15,8 @@ type postsType = {
 type profileStateType = {
     posts: Array<postsType>,
     newPostText: string,
-    profile: null
+    profile: null,
+    status: string
 }
 
 let initialState: profileStateType = {
@@ -26,7 +28,8 @@ let initialState: profileStateType = {
         {id: 5, message: 'Frontend is more visual than backend', likesCount: 5}
     ],
     newPostText: 'enter text...',
-    profile: null
+    profile: null,
+    status: ''
 }
 
 type pushNewPostProfileACType = {
@@ -65,8 +68,11 @@ const profileReducer = (state = initialState, action: any) => {
                 newPostText: action.newText
             }
         case SET_USERS_PROFILE:
-
             return {...state, profile: action.profile}
+
+        case SET_STATUS_PROFILE:
+            return {...state, status: action.status}
+
         default:
             return state
     }
@@ -75,13 +81,35 @@ const profileReducer = (state = initialState, action: any) => {
 
 export const pushNewPostProfileCreator = () => ({type: PUSH_NEW_POST_PROFILE})
 export const addNewValueProfileCreator = (text: string) => ({type: ADD_NEW_VALUE_TEXT, newText: text})
-export const setUsersProfile = (userId: string) => ({type: SET_USERS_PROFILE, profile: userId})
+export const setUsersProfileCreator = (userId: string) => ({type: SET_USERS_PROFILE, profile: userId})
+export const setStatusProfileCreator = (status: string) => ({type: SET_STATUS_PROFILE, status})
+
 
 export const getMyProfilePageThunkCreator = (userId: number) => {
     return (dispatch: any) => {
         // @ts-ignore
         getMyPageProfileAPI(userId).then((data: any) => {
-            dispatch(setUsersProfile(data))
+            dispatch(setUsersProfileCreator(data))
+        })
+    }
+}
+
+export const setStatusProfileThunkCreator = (userId: string) => {
+    return (dispatch: any) => {
+        // @ts-ignore
+        getStatusProfileAPI(userId).then((data: any) => {
+            dispatch(setStatusProfileCreator(data))
+        })
+    }
+}
+
+export const updateStatusProfileThunkCreator = (statusText: string) => {
+    return (dispatch: any) => {
+        // @ts-ignore
+        updateStatusProfileAPI(statusText).then((data: any) => {
+            if (data.resultCode === 0) {
+                dispatch(setStatusProfileCreator(statusText))
+            }
         })
     }
 }
