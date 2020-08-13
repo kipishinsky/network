@@ -31,6 +31,15 @@ export default class ProfileStatus extends Component <PropsType> {
         this.setState({status: e.target.value})
     }
 
+    componentDidUpdate(prevProps: any, prevState: any) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({status:this.props.status})
+        }
+        //let a = this.state
+        //let b = this.props
+        // console.log('componentDidUpdate')
+    }
+
     render() {
 
         return (
