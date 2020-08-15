@@ -2,7 +2,6 @@ import {profileResponseDataType} from '../components/profile/ProfileContainer'
 import {getMyPageProfileAPI, getStatusProfileAPI, updateStatusProfileAPI} from '../api/Api'
 
 const PUSH_NEW_POST_PROFILE = 'PUSH_NEW_POST_PROFILE'
-const ADD_NEW_VALUE_TEXT = 'ADD_NEW_VALUE_TEXT'
 const SET_USERS_PROFILE = 'SET_USERS'
 const SET_STATUS_PROFILE = 'SET_STATUS_PROFILE'
 
@@ -14,7 +13,6 @@ type postsType = {
 
 type profileStateType = {
     posts: Array<postsType>,
-    newPostText: string,
     profile: null,
     status: string
 }
@@ -27,18 +25,13 @@ let initialState: profileStateType = {
         {id: 4, message: 'I\'m visiting my granny this weekend', likesCount: 10},
         {id: 5, message: 'Frontend is more visual than backend', likesCount: 5}
     ],
-    newPostText: 'enter text...',
     profile: null,
     status: ''
 }
 
 type pushNewPostProfileACType = {
-    type: 'PUSH_NEW_POST_PROFILE'
-}
-
-type addNewValueProfileACType = {
-    type: 'ADD_NEW_VALUE_TEXT',
-    newText: string
+    type: 'PUSH_NEW_POST_PROFILE',
+    newPostText: string
 }
 
 type setUsersProfileType = {
@@ -46,7 +39,7 @@ type setUsersProfileType = {
     profile: Array<profileResponseDataType>
 }
 
-type ActionType = pushNewPostProfileACType | addNewValueProfileACType | setUsersProfileType
+type ActionType = pushNewPostProfileACType | setUsersProfileType
 
 const profileReducer = (state = initialState, action: any) => {
 
@@ -54,7 +47,7 @@ const profileReducer = (state = initialState, action: any) => {
         case PUSH_NEW_POST_PROFILE:
             let newPost = {
                 id: 6,
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0
             }
             return {
@@ -62,11 +55,7 @@ const profileReducer = (state = initialState, action: any) => {
                 posts: [...state.posts, newPost],
                 newPostText: ''
             }
-        case ADD_NEW_VALUE_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
-            }
+
         case SET_USERS_PROFILE:
             return {...state, profile: action.profile}
 
@@ -79,8 +68,7 @@ const profileReducer = (state = initialState, action: any) => {
 }
 
 
-export const pushNewPostProfileCreator = () => ({type: PUSH_NEW_POST_PROFILE})
-export const addNewValueProfileCreator = (text: string) => ({type: ADD_NEW_VALUE_TEXT, newText: text})
+export const pushNewPostProfileCreator = (newValueText: string) => ({type: PUSH_NEW_POST_PROFILE, newValueText})
 export const setUsersProfileCreator = (userId: string) => ({type: SET_USERS_PROFILE, profile: userId})
 export const setStatusProfileCreator = (status: string) => ({type: SET_STATUS_PROFILE, status})
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import {pushNewPostProfileCreator, addNewValueProfileCreator} from '../../../redux/profile-reducer'
+import {pushNewPostProfileCreator} from '../../../redux/profile-reducer'
 import Posts from './Posts'
 import {connect} from 'react-redux'
 
@@ -14,12 +14,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
 
     return {
-        pushNewPostWall: () => {
-            dispatch(pushNewPostProfileCreator())
-        },
-        addNewValueInput: (newText: any) => {
-            let action = addNewValueProfileCreator(newText);
-            dispatch(action);
+        pushNewPostWall: (newValueText: string) => {
+            dispatch(pushNewPostProfileCreator(newValueText))
         }
     }
 }

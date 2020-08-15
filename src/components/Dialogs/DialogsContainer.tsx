@@ -1,8 +1,7 @@
 import React from 'react';
-import {pushNewMessageButtonCreator, addNewValueTextDialogsCreator} from '../../redux/dialogs-reducer';
+import {pushNewMessageButtonCreator} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 import {withAuthRedirect} from '../hoc/WithAuthRedirect'
 import {compose} from 'redux'
 
@@ -17,12 +16,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any): any => {
 
     return {
-
-        addNewValueTextDialogsCallbackProps: (newMessage: any) => {
-            dispatch(addNewValueTextDialogsCreator(newMessage))
-        },
-        pushNewMessageButtonClickCallbackProps: () => {
-            dispatch(pushNewMessageButtonCreator())
+        pushNewMessageButtonClickCallbackProps: (newValueText: any) => {
+            dispatch(pushNewMessageButtonCreator(newValueText))
         }
     }
 }

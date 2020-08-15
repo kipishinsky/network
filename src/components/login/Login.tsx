@@ -3,23 +3,6 @@ import {Field, reduxForm} from 'redux-form'
 
 
 
-const Login = () => {
-    const onSubmit = (formData: any) => {
-        console.log(formData)
-    }
-
-    return (
-        <div>
-            <h1>LOGIN</h1>
-            <LoginReduxForm
-                // @ts-ignore
-                onSumbit={onSubmit}/>
-        </div>
-    )
-}
-
-
-
 const LoginForm = (props: any) => {
     return (
         <form onSubmit={props.handleSubmit}>
@@ -41,5 +24,19 @@ const LoginForm = (props: any) => {
 
 // @ts-ignore
 let LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
+
+const Login = (props: any) => {
+    const onSubmit = (formData: any) => {
+        console.log(formData)
+    }
+    return (
+        <div>
+            <h1>LOGIN</h1>
+            <LoginReduxForm
+                // @ts-ignore
+                onSumbit={onSubmit}/>
+        </div>
+    )
+}
 
 export default Login

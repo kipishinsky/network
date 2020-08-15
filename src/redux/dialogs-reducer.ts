@@ -1,6 +1,5 @@
 import cat from '../image/cat.jpg'
 
-const ADD_NEW_VALUE_TEXT_DIALOGS = 'ADD_NEW_VALUE_TEXT_DIALOGS'
 const PUSH_NEW_MESSAGE_BUTTON = 'PUSH_NEW_MESSAGE_BUTTON'
 
 
@@ -17,8 +16,7 @@ interface dialogsMessagesType {
 
 type dialogsStateType = {
     dialogs: Array<dialogsType>,
-    messages: Array<dialogsMessagesType>,
-    newMessageTextDialogs: string
+    messages: Array<dialogsMessagesType>
 }
 
 let initialState: dialogsStateType = {
@@ -35,8 +33,7 @@ let initialState: dialogsStateType = {
         {id: 3, message: 'What are your interests/hobbies?'},
         {id: 4, message: 'I am meeting my friends in the evening'},
         {id: 5, message: 'I like to create web-sites'}
-    ],
-    newMessageTextDialogs: ''
+    ]
 }
 
 
@@ -46,7 +43,8 @@ type addNewValueTextACType = {
 }
 
 type pushNewMessageACType = {
-    type: 'PUSH_NEW_MESSAGE_BUTTON'
+    type: 'PUSH_NEW_MESSAGE_BUTTON',
+    newValueText: string
 }
 
 type ActionType =
@@ -57,29 +55,18 @@ const dialogsReducer = (state = initialState, action: ActionType) => {
 
     switch (action.type) {
         case PUSH_NEW_MESSAGE_BUTTON:
-            let newMessage = state.newMessageTextDialogs;
+            let newMessage = action.newValueText
             return {
                 ...state,
-                newMessageTextDialogs: '',
                 messages: [...state.messages, {id: 6, message: newMessage}]
             }
-        case ADD_NEW_VALUE_TEXT_DIALOGS:
-            debugger
-            return {
-                ...state,
-                newMessageTextDialogs: action.newMessageDialogs
-            }
         default:
-            return state;
+            return state
     }
 }
 
 export default dialogsReducer
 
-export const addNewValueTextDialogsCreator = (newMess: string) => ({
-    type: ADD_NEW_VALUE_TEXT_DIALOGS,
-    newMessageDialogs: newMess
-})
-export const pushNewMessageButtonCreator = () => ({type: PUSH_NEW_MESSAGE_BUTTON})
+export const pushNewMessageButtonCreator = (newValueText: any) => ({type: PUSH_NEW_MESSAGE_BUTTON, newValueText})
 
 
