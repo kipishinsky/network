@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './users.module.css'
-import userPhoto from '../../image/user_ava.jpg'
-import {NavLink, Redirect} from 'react-router-dom'
+import userPhoto from '../../Image/user_ava.jpg'
+import {NavLink} from 'react-router-dom'
 
 
 let Users = (props: any) => {
@@ -34,7 +34,7 @@ let Users = (props: any) => {
                         <span>
                             <div>
                                 <NavLink to={'./profile/' + u.id}>
-                                    <img src={userPhoto} className={styles.userPhoto}/>
+                                    <img src={userPhoto} className={styles.userPhoto} alt={'no img'}/>
                                 </NavLink>
                                 </div>
                             <div>
@@ -43,7 +43,7 @@ let Users = (props: any) => {
                                     ?
                                     <button
                                         // @ts-ignore
-                                        disabled={props.followingInProgress.some(id => u.id === u.id)}
+                                        disabled={props.followingInProgress.some(u => u.id === u.id)}
                                         onClick={() => {
                                             props.unfollowThunkCreator(u.id)
                                         }}
@@ -52,7 +52,7 @@ let Users = (props: any) => {
                                     :
                                     <button
                                         // @ts-ignore
-                                        disabled={props.followingInProgress.some(id => u.id === u.id)}
+                                        disabled={props.followingInProgress.some(u => u.id === u.id)}
                                         onClick={() => {
                                             props.followThunkCreator(u.id)
                                         }}

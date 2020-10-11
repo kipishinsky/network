@@ -1,4 +1,4 @@
-import cat from '../image/cat.jpg'
+import cat from '../Image/cat.jpg'
 
 const PUSH_NEW_MESSAGE_BUTTON = 'PUSH_NEW_MESSAGE_BUTTON'
 

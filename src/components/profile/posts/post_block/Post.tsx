@@ -1,7 +1,7 @@
 import React from 'react'
 import pstBlock from './Post.module.css'
 import Like from './like/Like'
-import cat from '../../../../image/images.png'
+import cat from '../../../../Image/images.png'
 
 const Post = (props: any) => {
     return (

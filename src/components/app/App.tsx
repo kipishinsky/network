@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../navbar/Navbar'
 import ProfileContainer from '../profile/ProfileContainer'
 import UsersContainer from '../users/UsersContainer'
-import DialogsContainer from '../dialogs/DialogsContainer'
 import './App.css'
 import {Route} from 'react-router-dom'
-import HeaderContainer from '../header/HeaderContainer'
 import Login from '../login/Login'
+import HeaderContainer from "../Header/HeaderContainer";
+import Navbar from "../Navbar/Navbar";
+import DialogsContainer from "../Dialogs/DialogsContainer";
 
 
 const App = () => {
